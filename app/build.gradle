@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "com.port"
+        minSdkVersion 21
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+    }
+}
+    apply plugin: 'com.neenbedankt.android-apt'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    apt 'com.bluelinelabs:logansquare-compiler:1.1.0'
+    compile 'com.google.android.gms:play-services:7.8.0'
+    compile 'me.dm7.barcodescanner:zxing:1.8.2'
+    compile 'com.bluelinelabs:logansquare:1.1.0'
+}
